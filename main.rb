@@ -53,3 +53,23 @@ def calculator(operator, num1, num2)
     # Check if any letter occurs more than once
     letter_freq.values.any? { |freq| freq > 1 }
   end
+
+  #solution 3
+  def isIsogram(string)
+    # Convert the string to lowercase to ignore letter case
+    string = string.downcase
+    
+    # Create a hash to store the count of each letter
+    letter_count = Hash.new(0)
+    
+    # Iterate through each character in the string
+    string.each_char do |char|
+      # Increment the count of the current letter
+      letter_count[char] += 1
+      # If the count becomes greater than 1, it is not an isogram
+      return false if letter_count[char] > 1
+    end
+    
+    # If no repeated letters were found, it is an isogram
+    return true
+  end
