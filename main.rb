@@ -35,3 +35,21 @@ def calculator(operator, num1, num2)
     # If no repeated letters were found, it is an isogram
     return true
   end
+
+  #solution 2
+  def is_isogram(string)
+    # Convert the string to lowercase to ignore letter case
+    string = string.downcase
+    
+    # Create a hash to store the frequency of each letter
+    letter_freq = Hash.new(0)
+    
+    # Iterate through each character in the string
+    string.each_char do |char|
+      # Increment the frequency of the character in the hash
+      letter_freq[char] += 1
+    end
+    
+    # Check if any letter occurs more than once
+    letter_freq.values.any? { |freq| freq > 1 }
+  end
