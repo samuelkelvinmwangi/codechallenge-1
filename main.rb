@@ -14,20 +14,24 @@ def calculator(operator, num1, num2)
     end
   end
 
-  def isIsogram(string):
+  def is_isogram(string)
     # Convert the string to lowercase to ignore letter case
-    string = string.lower()
+    string = string.downcase
     
-    # Create a set to store the unique letters in the string
-    letters = set()
+    # Create an empty hash to store the count of each letter
+    letter_count = {}
     
     # Iterate through each letter in the string
-    for letter in string:
-        # If the letter is already in the set, it is a repeated letter
-        if letter in letters:
-            return False
-        # Add the letter to the set
-        letters.add(letter)
+    string.each_char do |letter|
+      # If the letter is already in the hash, it is a repeated letter
+      if letter_count[letter]
+        return false
+      else
+        # Add the letter to the hash with a count of 1
+        letter_count[letter] = 1
+      end
+    end
     
     # If no repeated letters were found, it is an isogram
-    return True
+    return true
+  end
